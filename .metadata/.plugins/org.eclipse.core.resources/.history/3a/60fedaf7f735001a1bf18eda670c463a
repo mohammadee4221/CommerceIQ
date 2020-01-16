@@ -1,0 +1,91 @@
+package tests;
+
+
+import java.io.*; 
+import java.util.*;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.opencsv.CSVWriter;
+
+import baseTest.baseTest;
+import pages.searchPage; 
+  
+public class ResultGenerator extends baseTest{ 
+	searchPage SearchPage;
+	
+	public ResultGenerator() {
+		super();
+	}
+	
+
+    @BeforeMethod
+	public void setUp() throws InterruptedException {				
+ 
+		SearchPage = new searchPage();
+		
+	}
+    
+    @Test
+    public void addDataToCSV() throws IOException 
+    { 
+  
+//    	List<String[]> details = new ArrayList<String[]>(); 
+//    	
+//    	List<WebElement> rows = driver.findElements(By.xpath("//*[@id=\"main\"]/div/span/div/div/div/table/tbody/tr"));
+//    	System.out.println(rows.size());
+    	
+    	
+    	WebElement table = driver.findElement(By.xpath("//*[@class=\"chart full-width\"]"));
+    
+    	// Now get all the TR elements from the table
+    	List<WebElement> allRows = table.findElements(By.xpath("//*[@id=\"main\"]/div/span/div/div/div[3]/table/tbody/tr"));
+    	
+    	// And iterate over them, getting the cells
+    	for (WebElement row : allRows) {
+    	    List<WebElement> cells = driver.findElements(By.xpath("//*[@id=\"main\"]/div/span/div/div/div[3]/table/tbody/tr/td[2]/a"));
+    	    outer :  for (WebElement cell : cells) {
+    	        System.out.println("content >>   " + cell.getText());
+    	        break outer;
+    	    }
+    	}
+    	
+
+//	        try {  
+//	        	
+//	        	String csv = "C:\\Users\\Fameena\\Desktop\\CommerceIQ\\assisgnment\\TestData\\data.csv";
+//	        	CSVWriter writer = new CSVWriter(new FileWriter(csv), '|', 
+//                        CSVWriter.NO_QUOTE_CHARACTER, 
+//                        CSVWriter.DEFAULT_ESCAPE_CHARACTER, 
+//                        CSVWriter.DEFAULT_LINE_END);
+// 
+//	        	for(WebElement name : SearchPage.movieName) {
+//	            	
+//	        		for(WebElement year : SearchPage.movieYear) {
+//	            		
+//	            	outer:	for(WebElement rating : SearchPage.movieRating) {
+//	            			
+//	            			(details).add(new String[] {name.getText(),year.getText(),rating.getText()});
+//		            		break ;
+//	            		}
+//	            		
+//	            	}
+//				}
+//	        	
+//
+//	        		            	  
+//	        	writer.writeAll(details); 
+//	            writer.close(); 
+//
+//					            
+//	        } 
+//	        catch (NoSuchElementException e) { 
+//	        	System.out.println("No");
+//	        } 	
+
+    } 
+} 

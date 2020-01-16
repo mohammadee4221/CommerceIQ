@@ -1,0 +1,28 @@
+package baseTest;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
+public class baseTest {
+	
+public static WebDriver driver;
+	
+	@BeforeClass
+	 public static void initialization(){
+	 
+		 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Fameena\\Downloads\\chromedriver_win32 (5)\\chromedriver.exe");		 
+		 driver = new ChromeDriver(); 
+		 driver.manage().window().maximize();
+		 driver.manage().deleteAllCookies();
+		 //driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
+		 driver.get("https://www.imdb.com/search/title/?count=100&groups=top_1000&sort=user_rating");					 							
+	 } 
+	
+	@AfterClass
+	public void tearDown(){
+		driver.quit();
+	}
+
+}

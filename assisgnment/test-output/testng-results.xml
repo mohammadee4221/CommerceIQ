@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="161265" started-at="2020-01-16T22:39:43 IST" finished-at="2020-01-16T22:42:24 IST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="161265" started-at="2020-01-16T22:39:43 IST" finished-at="2020-01-16T22:42:24 IST">
+      <class name="tests.ResultGenerator">
+        <test-method status="PASS" signature="initialization()[pri:0, instance:tests.ResultGenerator@d44fc21]" name="initialization" is-config="true" duration-ms="42768" started-at="2020-01-16T22:39:43 IST" finished-at="2020-01-16T22:40:26 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialization -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:tests.ResultGenerator@d44fc21]" name="setUp" is-config="true" duration-ms="100" started-at="2020-01-16T22:40:26 IST" finished-at="2020-01-16T22:40:26 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="addDataToCSV()[pri:0, instance:tests.ResultGenerator@d44fc21]" name="addDataToCSV" duration-ms="117476" started-at="2020-01-16T22:40:26 IST" finished-at="2020-01-16T22:42:23 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addDataToCSV -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:tests.ResultGenerator@d44fc21]" name="tearDown" is-config="true" duration-ms="796" started-at="2020-01-16T22:42:23 IST" finished-at="2020-01-16T22:42:24 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.ResultGenerator -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

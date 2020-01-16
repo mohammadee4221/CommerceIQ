@@ -1,0 +1,75 @@
+package tests;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import baseTest.baseTest;
+import junit.framework.Assert;
+import pages.searchPage;
+
+public class imdbTest extends baseTest{
+		searchPage SearchPage;
+		
+		public imdbTest(){
+			super();		
+		}
+		
+		@BeforeMethod
+		public void setUp() throws InterruptedException {				
+	 
+			SearchPage = new searchPage();
+			
+		}
+		
+		@Test
+		public void details() {
+			//Assert.assertTrue(driver.getTitle().contains("Top 250 Movies - IMDb"));
+			
+			List<String> details = new ArrayList<String>();
+			for(WebElement name : SearchPage.movieName) {
+				details.add(name.getText());
+			}
+			
+			for(WebElement year : SearchPage.movieYear) {
+				details.add(year.getText());
+			}
+			
+			for(WebElement rating : SearchPage.movieRating) {
+				details.add(rating.getText());
+			}
+			SearchPage.nextButton.click();
+			boolean nextButt = driver.findElement(By.xpath("(//*[@class=\"lister-page-next next-page\"])[1]")).isEnabled();
+			
+			while(nextButt) {
+				try {
+					SearchPage.nextButton.click();
+					for(WebElement name : SearchPage.movieName) {
+						details.add(name.getText());
+					}
+					
+					for(WebElement year : SearchPage.movieYear) {
+						details.add(year.getText());
+					}
+					
+					for(WebElement rating : SearchPage.movieRating) {
+						details.add(rating.getText());
+					}
+					SearchPage.nextButton.isDisplayed();
+				}
+				catch(NoSuchElementException e){
+					nextButt = false;
+				}
+			}
+			for(String detail :details) {
+				System.out.printf("[%4s%-4s]%n", detail);
+			}
+
+		}
+
+}

@@ -1,0 +1,35 @@
+package tests;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeMethod;
+
+import baseTest.baseTest;
+import pages.searchPage;
+
+public class main extends baseTest{
+	
+	static searchPage SearchPage;
+	public static void main(String[] args) {
+					 
+			SearchPage = new searchPage();
+
+		try {
+			List<movies> details = new ArrayList<movies>();
+			List<movies> details1 = new ArrayList<movies>();
+			
+			for(WebElement name : SearchPage.movieName) {
+				details.add(name.getText());
+			} 
+			
+			for(WebElement rating : SearchPage.movieRating) {
+				details.addAll(rating.getText());
+			}
+		}
+		catch(Exception e) {
+			
+		}
+	}
+}

@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\Fameena\Desktop\CommerceIQ\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+222235488.index
+1412359589.index
+3628406223.index
+1226858073.index
+4139415819.index
+3093968433.index

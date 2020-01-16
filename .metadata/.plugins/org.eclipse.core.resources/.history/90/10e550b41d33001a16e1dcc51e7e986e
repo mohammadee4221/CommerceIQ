@@ -1,0 +1,26 @@
+package pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+
+import baseTest.baseTest;
+
+public class searchPage extends baseTest{
+
+	public searchPage() {
+		PageFactory.initElements(driver, this);
+	}
+	
+	 @FindBy(how=How.XPATH, using="//*[@class=\"LM6RPg\"]")
+	 public WebElement enterprod;
+	 
+	 @FindBy(how=How.XPATH, using="//div[@class='O8ZS_U']/input")WebElement enterprodKeys;
+	 
+	 @FindBy (how=How.XPATH, using="/html/body/div[2]/div/div/button")WebElement closePopup;
+	 	 	 
+	public void getMovieDetails() {
+		
+	}
+}

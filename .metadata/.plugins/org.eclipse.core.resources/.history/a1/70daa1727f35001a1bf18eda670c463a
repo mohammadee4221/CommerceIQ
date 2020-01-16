@@ -1,0 +1,46 @@
+package tests;
+
+
+import java.io.*; 
+import java.util.*;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.opencsv.CSVWriter;
+
+import baseTest.baseTest;
+import pages.searchPage; 
+  
+public class sample extends baseTest{ 
+	searchPage SearchPage;
+	
+	public sample() {
+		super();
+	}
+	
+//    private static final String CSV_FILE_PATH 
+//        = "C:\\Users\\Fameena\\Desktop\\CommerceIQ\\assisgnment\\TestData\\data.csv"; 
+
+    @BeforeMethod
+	public void setUp() throws InterruptedException {				
+ 
+		SearchPage = new searchPage();
+		
+	}
+    
+    @Test
+    public void test() {
+    	List<String[]> details = new ArrayList<String[]>();
+    	for(WebElement data : SearchPage.chart) {
+    		final String title = SearchPage.movieName.text
+    		
+    	}
+    }
+    
+    	
+ 
+} 

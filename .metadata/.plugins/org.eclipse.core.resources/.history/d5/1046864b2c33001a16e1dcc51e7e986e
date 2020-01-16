@@ -1,0 +1,48 @@
+package tests;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import baseTest.baseTest;
+import junit.framework.Assert;
+import pages.searchPage;
+
+public class imdbTest extends baseTest{
+		searchPage SearchPage;
+		
+		public imdbTest(){
+			super();		
+		}
+		
+		@BeforeMethod
+		public void setUp() throws InterruptedException {				
+	 
+			SearchPage = new searchPage();
+			
+		}
+		
+		@Test
+		public void details() {
+			Assert.assertTrue(driver.getTitle().contains("Top 250 Movies - IMDb"));
+//			Actions actions = new Actions(driver);
+//			Action scroll = actions.sendKeys(Keys.PAGE_DOWN).build();
+//			scroll.perform();
+			((JavascriptExecutor) driver)
+		     .executeScript("window.scrollTo(0, document.body.scrollHeight)");
+			
+			System.out.println("Total no of rows : " +SearchPage.rowCount.size());
+			
+			for(int i =1; i<=SearchPage.rowCount.size(); i++) {
+				String s = "//*[@id=\"main\"]/div/div[3]/div/div/div/h3/a";
+				WebElement productName = driver.findElement(By.xpath(s));
+				System.out.println(productName.getText().toString());
+			}
+		}
+
+}

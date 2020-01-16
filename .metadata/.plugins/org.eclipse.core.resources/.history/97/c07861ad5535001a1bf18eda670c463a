@@ -1,0 +1,72 @@
+package tests;
+
+
+import java.io.*; 
+import java.util.*;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.opencsv.CSVWriter;
+
+import baseTest.baseTest;
+import pages.searchPage; 
+  
+public class ResultGenerator extends baseTest{ 
+	searchPage SearchPage;
+	
+	public ResultGenerator() {
+		super();
+	}
+	
+    private static final String CSV_FILE_PATH 
+        = "C:\\Users\\Fameena\\Desktop\\CommerceIQ\\assisgnment\\TestData\\data.csv"; 
+
+    @BeforeMethod
+	public void setUp() throws InterruptedException {				
+ 
+		SearchPage = new searchPage();
+		
+	}
+    
+    @Test
+    public   void addDataToCSV(String output) 
+    { 
+
+        File file = new File(output);  
+        boolean nextButt = driver.findElement(By.xpath("(//*[@class=\"lister-page-next next-page\"])[1]")).isEnabled();
+        while(nextButt) {
+	        try {  
+	            FileWriter outputfile = new FileWriter(file); 
+	            CSVWriter writer = new CSVWriter(outputfile); 
+	  
+	            List<String[]> details = new ArrayList<String[]>(); 
+	            //List<String> details = new ArrayList<String>();
+	  
+	            for(WebElement name : SearchPage.movieName) {
+					((Writer) details).append(name.getText());
+				}
+				
+				for(WebElement year : SearchPage.movieYear) {
+				((Writer) details).append(year.getText());
+				}
+				
+				for(WebElement rating : SearchPage.movieRating) {
+					((Writer) details).append(rating.getText());
+				}
+				SearchPage.nextButton.isDisplayed();
+				SearchPage.nextButton.click();
+			
+	  
+	            writer.writeAll(details); 
+	            writer.close(); 
+	        } 
+	        catch (IOException e) { 
+	            // TODO Auto-generated catch block 
+	            e.printStackTrace(); 
+	        } 
+        }
+    } 
+} 
